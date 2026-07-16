@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `createDmkError` factory function and wire DMK `_tag` resolution into the Ledger DMK bridge ([#597](https://github.com/MetaMask/accounts/pull/597))
+  - `createDmkError` constructs `HardwareWalletError` instances from DMK `_tag` strings.
+  - `translateDmkError` now resolves DMK connection/session errors (e.g. `DeviceSessionNotFound`, `DeviceLockedError`) by their `_tag` before falling back to hex APDU status codes.
+  - `LedgerDmkBridge.#toError` also resolves DMK `_tag` errors so `sendCommand` failures are correctly classified.
+
+### Changed
+
+- Bump `@metamask/hw-wallet-sdk` from `^0.10.0` to `^0.11.0` ([#597](https://github.com/MetaMask/accounts/pull/597))
+
 ## [12.3.0]
 
 ### Changed
